@@ -6,6 +6,6 @@ export function getSubmit(data) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data) // Directamente los datos
+    body: JSON.stringify(data)
   })
 }
