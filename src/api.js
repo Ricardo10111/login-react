@@ -18,5 +18,13 @@ export function createUser(data) {
     },
     body: JSON.stringify(data)
   })
-  
+}
+
+export function getUsers() {
+  return fetch(`${API_URL}/users/id`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
 }

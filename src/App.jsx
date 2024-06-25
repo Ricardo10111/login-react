@@ -2,14 +2,17 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { createUser } from './api'
 import { Toaster, toast } from 'sonner'
+import {  useNavigate } from 'react-router-dom'
 
 export default function App() {
   const [user, setUser] = useState({})
 
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted},
+    formState: { errors, isValid, isSubmitted },
     reset
   } = useForm()
 
@@ -33,13 +36,10 @@ export default function App() {
         if (json?.data) {
           setUser(json.data)
           toast.success('User created successfully')
-          reset()
-          if (toast.success('User created successfully')){
-            window.location.href = '/src/create.user.html'
-
-          }
+          navigate('/login')
         } else {
           toast.error('Failed to create user')
+          reset()
         }
       })
       .catch((error) => {
